@@ -7,143 +7,101 @@
     <!-- NOTE bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <!-- NOTE custom style sheet -->
     <link rel="stylesheet" href="style.css">
     <title>Tree Miner</title>
 </head>
 
-<body class="container-fluid hero-bg">
-
+<body class="hero-bg">
+    <!--NOTE header container for the game -->
     <header>
-        <div class="text-center text-light m-5">
-            <h1>Tree Miner</h1>
-        </div>
+        <section class="row justify-content-center">
+            <div class="col-md-8">
+                <!--NOTE Game title -->
+                <h1 class="text-center text-light mt-3 p-3">Tree Miner</h1>
+            </div>
+        </section>
 
     </header>
 
-    <main>
-        <div class="container-fluid">
-            <section class="row">
-                <div class="col-12">
-                    <div class="text-center">
-                        <img onclick="mineTree()" class="tree-img img-fluid" src="Tree.png" alt="image of a tree"
-                            role="button">
-                    </div>
+    <main class="container-fluid">
+        <section class="row justify-content-center">
+            <div class="col-md-8">
+                <!--NOTE Clickable apple tree image -->
+                <div class="text-center mb-4">
+                    <img src="https://static.vecteezy.com/system/resources/previews/027/251/652/original/apple-tree-isolated-on-white-or-transparent-background-cutout-generative-ai-png.png"
+                        alt="Apple Tree" onclick="appleClicks()" class="img-fluid">
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
+
     <footer>
-        <!-- first card -->
-        <div class="container-fluid">
-            <section class="row">
-                <div class="col-12">
-                    <div class="d-flex justify-content-center align-items-center bg-info">
-                        <div id="pickaxe">
-                            <p class="mb-0 d-flex justify-content-between fs-5">
-                                <span> + 1</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Second card -->
-                    <div id="amount of apples">
-                        <h2 class="mb-0 d-flex justify-content-between  text-light  fs-1">
-                            <span> + 0</span>
-                        </h2>
-                    </div>
-
-                    <!-- third card -->
-                    <div id="rover">
-                        <p class="mb-0 d-flex justify-content-between  text-light  fs-5">
-                            <span> + 0</span>
-                        </p>
-                    </div>
+        <!--NOTE Display for apple count and apples per second -->
+        <section class="row">
+            <div class="col-md-6">
+                <div class="text-light">
+                    <p class="fs-2">Apples:
+                        <span id="appleCount">0</span>
+                    </p>
                 </div>
-            </section>
+            </div>
 
-            <section class="row">
-                <div class="col-md-6">
-                    <div class="d-flex justify-content-center">
-                        <div class="card bg-info">
-                            <div class="card-body">
-                                <div class=" mt-3">
-                                    <label class="fs-2" for="click upgrades">Click Upgrades</label>
-                                    <div>
-                                        <div id="" onclick="click()"
-                                            class="btn bg-light border border-4 p-4 text-black fs-2">
-                                            100 🍎</div>
-                                        <label for="">Lorem, ipsum. +1 </label>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class=" mt-3">
-                                <label class="fs-2" for="Automatic upgrades">Automatic Upgrades</label>
-                                <div>
-                                    <div id="rover" onclick=""
-                                        class="btn bg-secondary border border-4 p-4 text-light fs-2">
-                                        600
-                                        🍎
-                                    </div>
-                                    <label for="">Lorem, ipsum. +1 </label>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-6">
+                <div class="text-light">
+                    <p class="fs-2">Apples per second:
+                        <span id="applesPerSecond">0</span>
+                    </p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="row">
-                <div class="col-md-6">
-                    <div class="d-flex justify-content-center">
-                        <div class="card bg-info">
-                            <div class="card-body">
-                                <div class=" mt-3">
-                                    <label class="fs-2" for="click Stats">Click Stats</label>
-                                    <div>
-                                        <div class="btn bg-light border border-2 text-black"> yes</div>
-                                        <label for="">Lorem, ipsum. +1 </label>
-                                    </div>
 
-                                    <div class="mt-3">
-                                        <div class="btn bg-light border border-2 text-black"> hey</div>
-                                        <label for="">Lorem, ipsum. +5 </label>
-                                    </div>
-                                </div>
-
-                                <div class=" mt-3">
-                                    <label class="fs-2" for="Automatic Stats">Automatic Stats</label>
-                                    <div>
-                                        <div class="btn bg-secondary border border-2 text-light"> yes</div>
-                                        <label for="">Lorem, ipsum. +1 </label>
-                                    </div>
-
-                                    <div class="mt-3">
-                                        <div class="btn bg-secondary border border-2 text-light"> hey</div>
-                                        <label for="">Lorem, ipsum. +5 </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!--NOTE Upgrades section -->
+        <section class="row">
+            <!-- Click upgrades -->
+            <div class="col-md-6">
+                <div id="clickUpgrades" class="text-light">
+                    <p>Click Upgrades</p>
                 </div>
-            </section>
-        </div>
-        </div>
+            </div>
+
+
+            <!--NOTE Automatic upgrades -->
+            <div class="col-md-6 text-light">
+                <div id="autoUpgrades" class="mb-3">
+                    <h2>Automatic Upgrades</h2>
+                </div>
+            </div>
+        </section>
+
+        <!--NOTE Stats section -->
+        <section class="row">
+            <div class="col-md-6">
+                <div class="text-center text-light">
+                    <h2 class="mb-3">Stats</h2>
+                    <p class="fs-1">Apples per click:
+                        <span id="applesPerClick">1</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="text-center text-light">
+                    <h2 class="mb-3">Stats</h2>
+                    <p class="fs-1">Apples per second:
+                        <span id="totalApplesPerSecond">0</span>
+                    </p>
+                </div>
+            </div>
+        </section>
 
 
     </footer>
 
 
-
-
-
-    <!-- NOTE js script -->
+    <!--NOTE Link to the JavaScript file -->
     <script src="app.js"></script>
 </body>
 
