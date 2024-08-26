@@ -1,6 +1,6 @@
 console.log('tree miner')
 
-//NOTE Define upgrades that increase apples per click
+//NOTE upgrades that increase apples per click
 let clickUpgrades = [
     {
         name: "Basket",
@@ -10,7 +10,7 @@ let clickUpgrades = [
     }
 ];
 
-//NOTE Define upgrades that increase apples per second
+//NOTE  upgrades that increase apples per second
 let autoUpgrades = [
     {
         name: "Tree",
@@ -20,12 +20,14 @@ let autoUpgrades = [
     }
 ];
 
-//NOTE Initialize game variables
-let apples = 0;                //NOTE Total number of apples
-let applesPerClick = 1;        //NOTE Number of apples gained per click
-let applesPerSecond = 0;       //NOTE Number of apples gained automatically per second
+//NOTE Total number of apples
+let apples = 0;
+//NOTE Number of apples gained per click
+let applesPerClick = 1;
+//NOTE Number of apples gained automatically per second
+let applesPerSecond = 0;
 
-//NOTE Function to update the display with current game state
+//NOTE function update the display with current game state
 function updateDisplay() {
     document.getElementById('appleCount').innerText = Math.floor(apples);
     document.getElementById('applesPerSecond').innerText = applesPerSecond;
@@ -36,12 +38,12 @@ function updateDisplay() {
     updateUpgradesDisplay('autoUpgrades');
 }
 
-//NOTE Function to update the display of available upgrades
+//NOTE function update the display of available upgrades
 function updateUpgradesDisplay(upgradeType) {
     let upgradesHTML = '';
     let upgrades = upgradeType == 'clickUpgrades' ? clickUpgrades : autoUpgrades;
 
-    // Generate HTML for each upgrade
+    //NOTE generate HTML for each upgrade
     for (let i = 0; i < upgrades.length; i++) {
         upgradesHTML += `
             <div class="upgrade">
@@ -57,13 +59,13 @@ function updateUpgradesDisplay(upgradeType) {
     document.getElementById(upgradeType).innerHTML = upgradesHTML;
 }
 
-//NOTE Function to handle clicking for apples
+//NOTE Function handle clicking for apples
 function appleClicks() {
     apples += applesPerClick;
     updateDisplay();
 }
 
-//NOTE Function to handle buying upgrades
+//NOTE Function handle buying upgrades
 function buyUpgrade(upgradeType, index) {
     let upgrades = upgradeType == 'clickUpgrades' ? clickUpgrades : autoUpgrades;
     let upgrade = upgrades[index];
@@ -72,8 +74,8 @@ function buyUpgrade(upgradeType, index) {
     if (apples >= upgrade.cost) {
         apples -= upgrade.cost;
         upgrade.quantity += 1;
-        upgrade.cost = Math.ceil(upgrade.cost * 1.5);  //NOTE Increase cost for next purchase
-
+        //NOTE Increase cost for next purchase
+        upgrade.cost = Math.ceil(upgrade.cost * 1.5);
         //NOTE Apply upgrade effect
         if (upgradeType == 'clickUpgrades') {
             applesPerClick += upgrade.power;
@@ -85,11 +87,11 @@ function buyUpgrade(upgradeType, index) {
     }
 }
 
-//NOTE Set up interval to add apples automatically every second
+//NOTE  add apples automatically every second
 setInterval(function () {
     apples += applesPerSecond;
     updateDisplay();
 }, 1000);
 
-//NOTE Initial display update
+//NOTE display update
 updateDisplay();
